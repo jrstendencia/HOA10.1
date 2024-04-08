@@ -1,5 +1,5 @@
-[router]
-192.168.56.1
+[gns3_router]
+R1
 
 [routers:vars]
 ansible_user=cisco
