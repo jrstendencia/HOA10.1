@@ -1,6 +1,6 @@
 ---
 
-- hosts: routers
+- hosts: gns3_router
   become: true
   gather_facts: no
   tasks:
@@ -8,7 +8,7 @@
     - name: Apply the provided configuration
       cisco.ios.ios_hostname:
         config:
-          hostname: Router1
+          hostname: R1
         state: merged
 
     - name: Configure login banner
@@ -44,12 +44,12 @@
       - debug:
           msg="{{ Check_hostname }}"
 
-    - name: configure ip address in gigabitethernet 4/0
+    - name: configure ip address in fa0/0
       cisco.ios.ios_config:
         lines:
-        - ip address 10.0.1.1 255.255.255.0
+        - ip address 192.168.56.1 255.255.255.0
         - no shutdown
-        parents: interface g4/0
+        parents: interface fa0/0
 
     - block:
 
